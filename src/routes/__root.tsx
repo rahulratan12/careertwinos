@@ -77,13 +77,17 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "CareerOS // Your Career, Synthesized" },
+      { title: "AICareerOS" },
       { name: "description", content: "AI-powered career operating system. Multi-agent hiring panels, mock interviews, and your Career Twin." },
       { name: "author", content: "CareerOS" },
-      { property: "og:title", content: "CareerOS // Your Career, Synthesized" },
-      { property: "og:description", content: "Multi-agent hiring panels, mock interviews, skill-gap roadmaps, and a Career Twin that gets you job-ready faster." },
+      { property: "og:title", content: "AICareerOS" },
+      { property: "og:description", content: "AI-powered career operating system. Multi-agent hiring panels, mock interviews, and your Career Twin." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "AICareerOS" },
+      { name: "twitter:description", content: "AI-powered career operating system. Multi-agent hiring panels, mock interviews, and your Career Twin." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9a457e33-4c43-4711-bd40-47cc380c359e/id-preview-030b37be--6a19d7e6-395a-434a-9f25-775dfbef67a7.lovable.app-1780245241114.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/9a457e33-4c43-4711-bd40-47cc380c359e/id-preview-030b37be--6a19d7e6-395a-434a-9f25-775dfbef67a7.lovable.app-1780245241114.png" },
     ],
     links: [
       {
