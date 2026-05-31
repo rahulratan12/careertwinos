@@ -13,7 +13,8 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-const modules = [
+type ModuleCard = { num: string; title: string; to: string; desc: string; tag: string; featured?: boolean };
+const modules: ModuleCard[] = [
   { num: "01", title: "Multi-Agent Hiring Panel", to: "/hiring-panel", desc: "Recruiter, Hiring Manager, Tech Lead and Bar Raiser agents tear into your resume vs the JD.", tag: "PANEL" },
   { num: "02", title: "Hiring Probability", to: "/probability", desc: "Estimate your real hiring chance, with concrete drivers, blockers, and rejection reasons.", tag: "FORECAST" },
   { num: "03", title: "Skill Gap & Roadmap", to: "/skill-gap", desc: "Week-by-week roadmap that closes the deltas between you and the target role.", tag: "ROADMAP" },
@@ -21,7 +22,7 @@ const modules = [
   { num: "05", title: "Project Recommendation Engine", to: "/projects", desc: "The exact portfolio pieces hiring managers are trained to look for in 2026.", tag: "BUILD" },
   { num: "06", title: "Job Readiness Score", to: "/readiness", desc: "Six-axis readiness map with the top three moves to push every dimension forward.", tag: "SCORE" },
   { num: "07", title: "The Career Twin", to: "/twin", desc: "Your 24/7 conversational career strategist. Talks through every other module.", tag: "TWIN", featured: true },
-] as const;
+];
 
 function Index() {
   return (
