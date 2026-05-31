@@ -9,8 +9,50 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TwinRouteImport } from './routes/twin'
+import { Route as SkillGapRouteImport } from './routes/skill-gap'
+import { Route as ReadinessRouteImport } from './routes/readiness'
+import { Route as ProjectsRouteImport } from './routes/projects'
+import { Route as ProbabilityRouteImport } from './routes/probability'
+import { Route as MockInterviewRouteImport } from './routes/mock-interview'
+import { Route as HiringPanelRouteImport } from './routes/hiring-panel'
 import { Route as IndexRouteImport } from './routes/index'
 
+const TwinRoute = TwinRouteImport.update({
+  id: '/twin',
+  path: '/twin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SkillGapRoute = SkillGapRouteImport.update({
+  id: '/skill-gap',
+  path: '/skill-gap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReadinessRoute = ReadinessRouteImport.update({
+  id: '/readiness',
+  path: '/readiness',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsRoute = ProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProbabilityRoute = ProbabilityRouteImport.update({
+  id: '/probability',
+  path: '/probability',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MockInterviewRoute = MockInterviewRouteImport.update({
+  id: '/mock-interview',
+  path: '/mock-interview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HiringPanelRoute = HiringPanelRouteImport.update({
+  id: '/hiring-panel',
+  path: '/hiring-panel',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +61,130 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/hiring-panel': typeof HiringPanelRoute
+  '/mock-interview': typeof MockInterviewRoute
+  '/probability': typeof ProbabilityRoute
+  '/projects': typeof ProjectsRoute
+  '/readiness': typeof ReadinessRoute
+  '/skill-gap': typeof SkillGapRoute
+  '/twin': typeof TwinRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/hiring-panel': typeof HiringPanelRoute
+  '/mock-interview': typeof MockInterviewRoute
+  '/probability': typeof ProbabilityRoute
+  '/projects': typeof ProjectsRoute
+  '/readiness': typeof ReadinessRoute
+  '/skill-gap': typeof SkillGapRoute
+  '/twin': typeof TwinRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/hiring-panel': typeof HiringPanelRoute
+  '/mock-interview': typeof MockInterviewRoute
+  '/probability': typeof ProbabilityRoute
+  '/projects': typeof ProjectsRoute
+  '/readiness': typeof ReadinessRoute
+  '/skill-gap': typeof SkillGapRoute
+  '/twin': typeof TwinRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/hiring-panel'
+    | '/mock-interview'
+    | '/probability'
+    | '/projects'
+    | '/readiness'
+    | '/skill-gap'
+    | '/twin'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/hiring-panel'
+    | '/mock-interview'
+    | '/probability'
+    | '/projects'
+    | '/readiness'
+    | '/skill-gap'
+    | '/twin'
+  id:
+    | '__root__'
+    | '/'
+    | '/hiring-panel'
+    | '/mock-interview'
+    | '/probability'
+    | '/projects'
+    | '/readiness'
+    | '/skill-gap'
+    | '/twin'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  HiringPanelRoute: typeof HiringPanelRoute
+  MockInterviewRoute: typeof MockInterviewRoute
+  ProbabilityRoute: typeof ProbabilityRoute
+  ProjectsRoute: typeof ProjectsRoute
+  ReadinessRoute: typeof ReadinessRoute
+  SkillGapRoute: typeof SkillGapRoute
+  TwinRoute: typeof TwinRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/twin': {
+      id: '/twin'
+      path: '/twin'
+      fullPath: '/twin'
+      preLoaderRoute: typeof TwinRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/skill-gap': {
+      id: '/skill-gap'
+      path: '/skill-gap'
+      fullPath: '/skill-gap'
+      preLoaderRoute: typeof SkillGapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/readiness': {
+      id: '/readiness'
+      path: '/readiness'
+      fullPath: '/readiness'
+      preLoaderRoute: typeof ReadinessRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects': {
+      id: '/projects'
+      path: '/projects'
+      fullPath: '/projects'
+      preLoaderRoute: typeof ProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/probability': {
+      id: '/probability'
+      path: '/probability'
+      fullPath: '/probability'
+      preLoaderRoute: typeof ProbabilityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mock-interview': {
+      id: '/mock-interview'
+      path: '/mock-interview'
+      fullPath: '/mock-interview'
+      preLoaderRoute: typeof MockInterviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hiring-panel': {
+      id: '/hiring-panel'
+      path: '/hiring-panel'
+      fullPath: '/hiring-panel'
+      preLoaderRoute: typeof HiringPanelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,17 +197,14 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  HiringPanelRoute: HiringPanelRoute,
+  MockInterviewRoute: MockInterviewRoute,
+  ProbabilityRoute: ProbabilityRoute,
+  ProjectsRoute: ProjectsRoute,
+  ReadinessRoute: ReadinessRoute,
+  SkillGapRoute: SkillGapRoute,
+  TwinRoute: TwinRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
