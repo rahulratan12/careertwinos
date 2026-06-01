@@ -2,10 +2,18 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { skillGap } from "@/lib/ai.functions";
-import { ModuleShell, Field, Panel, inputCls, btnCls, ScoreBar, ErrorBox, Loader } from "@/components/ModuleShell";
+import { ModuleShell, Field, Panel, inputCls, btnCls, ScoreBar, ErrorBox, Loader, SrH2 } from "@/components/ModuleShell";
+import { routeHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/skill-gap")({
-  head: () => ({ meta: [{ title: "Skill Gap & Roadmap // CareerOS" }, { name: "description", content: "Personalized learning roadmap that closes the gaps between you and your target role." }] }),
+  head: () =>
+    routeHead({
+      path: "/skill-gap",
+      title: "Skill Gap & Learning Roadmap // CareerOS",
+      description:
+        "Personalized week-by-week learning roadmap that closes the gaps between your current skills and your target role.",
+      serviceName: "Skill Gap Analysis & Learning Roadmap",
+    }),
   component: Page,
 });
 
@@ -27,6 +35,7 @@ function Page() {
 
   return (
     <ModuleShell num="03" tag="ROADMAP" title="Skill Gap & Learning Roadmap" subtitle="An automated, week-by-week learning path calibrated to market demand and your target trajectory.">
+      <SrH2>Inputs</SrH2>
       <form onSubmit={onSubmit} className="space-y-5">
         <Field label="Target Role"><input className={inputCls} value={role} onChange={(e) => setRole(e.target.value)} /></Field>
         <Field label="Current Skills"><textarea className={`${inputCls} min-h-[140px]`} value={skills} onChange={(e) => setSkills(e.target.value)} /></Field>
@@ -38,6 +47,7 @@ function Page() {
 
       {err && <div className="mt-6"><ErrorBox message={err} /></div>}
 
+      <SrH2>Results</SrH2>
       {result && (
         <div className="mt-10 grid gap-6 md:grid-cols-5">
           <Panel className="md:col-span-2">

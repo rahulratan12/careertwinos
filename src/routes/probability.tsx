@@ -2,10 +2,18 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { hiringProbability } from "@/lib/ai.functions";
-import { ModuleShell, Field, Panel, inputCls, btnCls, ErrorBox, Loader } from "@/components/ModuleShell";
+import { ModuleShell, Field, Panel, inputCls, btnCls, ErrorBox, Loader, SrH2 } from "@/components/ModuleShell";
+import { routeHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/probability")({
-  head: () => ({ meta: [{ title: "Hiring Probability // CareerOS" }, { name: "description", content: "Monte-Carlo style hiring probability with concrete drivers, blockers, and rejection reasons." }] }),
+  head: () =>
+    routeHead({
+      path: "/probability",
+      title: "Hiring Probability Simulator // CareerOS",
+      description:
+        "Monte-Carlo style hiring probability for any role at any company, with concrete drivers, blockers, and likely rejection reasons.",
+      serviceName: "Hiring Probability Simulator",
+    }),
   component: Page,
 });
 
@@ -28,6 +36,7 @@ function Page() {
 
   return (
     <ModuleShell num="02" tag="FORECAST" title="Hiring Probability Simulator" subtitle="Predict your real hiring chance for a specific role at a specific company — and see exactly what's pulling the number up or down.">
+      <SrH2>Inputs</SrH2>
       <form onSubmit={onSubmit} className="space-y-5">
         <div className="grid gap-5 md:grid-cols-2">
           <Field label="Target Role"><input className={inputCls} value={role} onChange={(e) => setRole(e.target.value)} /></Field>
@@ -42,6 +51,7 @@ function Page() {
 
       {err && <div className="mt-6"><ErrorBox message={err} /></div>}
 
+      <SrH2>Results</SrH2>
       {result && (
         <div className="mt-10 grid gap-6 md:grid-cols-5">
           <Panel className="md:col-span-2 text-center">

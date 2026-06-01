@@ -96,6 +96,30 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Organization",
+              name: "CareerOS",
+              url: "https://careertwinos.lovable.app",
+              description:
+                "AI-powered career operating system that simulates real hiring workflows and helps students become job-ready faster.",
+            },
+            {
+              "@type": "WebSite",
+              name: "CareerOS",
+              url: "https://careertwinos.lovable.app",
+              description:
+                "Multi-agent hiring panels, mock interviews, skill-gap roadmaps, and a Career Twin for early-career professionals.",
+            },
+          ],
+        }),
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,

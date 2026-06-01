@@ -2,10 +2,18 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useState, useRef, useEffect } from "react";
 import { twinChat } from "@/lib/ai.functions";
-import { ModuleShell, inputCls, btnCls, ErrorBox } from "@/components/ModuleShell";
+import { ModuleShell, inputCls, btnCls, ErrorBox, SrH2 } from "@/components/ModuleShell";
+import { routeHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/twin")({
-  head: () => ({ meta: [{ title: "Career Twin // CareerOS" }, { name: "description", content: "Your 24/7 conversational career strategist." }] }),
+  head: () =>
+    routeHead({
+      path: "/twin",
+      title: "Career Twin // CareerOS",
+      description:
+        "Your 24/7 conversational AI career strategist — reasons across hiring panels, mock interviews, skill gaps, and readiness scores to plan your next move.",
+      serviceName: "Career Twin Conversational AI",
+    }),
   component: Page,
 });
 
@@ -54,6 +62,7 @@ function Page() {
           <div className="mono text-[10px] text-muted-foreground">Twin_Session.live</div>
           <div className="mono flex items-center gap-2 text-[10px] text-signal"><span className="h-1.5 w-1.5 animate-pulse rounded-full bg-signal" />ONLINE</div>
         </div>
+        <SrH2>Conversation</SrH2>
         <div className="max-h-[55vh] min-h-[40vh] overflow-y-auto p-5">
           <div className="space-y-5">
             {messages.map((m, i) => (
@@ -68,6 +77,7 @@ function Page() {
             <div ref={endRef} />
           </div>
         </div>
+        <SrH2>Suggested prompts</SrH2>
         <div className="flex flex-wrap gap-2 border-t border-border px-4 py-3">
           {SUGGESTIONS.map((s) => (
             <button key={s} onClick={() => send(s)} disabled={loading} className="mono rounded-sm border border-border px-2 py-1 text-[10px] text-muted-foreground transition-colors hover:border-signal hover:text-signal disabled:opacity-50">

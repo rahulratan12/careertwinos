@@ -2,10 +2,18 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { projectRecs } from "@/lib/ai.functions";
-import { ModuleShell, Field, Panel, inputCls, btnCls, ErrorBox, Loader } from "@/components/ModuleShell";
+import { ModuleShell, Field, Panel, inputCls, btnCls, ErrorBox, Loader, SrH2 } from "@/components/ModuleShell";
+import { routeHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/projects")({
-  head: () => ({ meta: [{ title: "Project Recommendation Engine // CareerOS" }, { name: "description", content: "Portfolio projects hiring managers are actually trained to look for in 2026." }] }),
+  head: () =>
+    routeHead({
+      path: "/projects",
+      title: "Project Recommendation Engine // CareerOS",
+      description:
+        "Portfolio projects hiring managers are actually trained to look for in 2026 — calibrated to your target role and current skill level.",
+      serviceName: "Portfolio Project Recommendations",
+    }),
   component: Page,
 });
 
@@ -27,6 +35,7 @@ function Page() {
 
   return (
     <ModuleShell num="05" tag="BUILD" title="Project Recommendation Engine" subtitle="Stop building generic todo apps. Build the exact portfolio pieces hiring agents at top firms are trained to look for in 2026.">
+      <SrH2>Inputs</SrH2>
       <form onSubmit={onSubmit} className="space-y-5">
         <Field label="Target Role"><input className={inputCls} value={role} onChange={(e) => setRole(e.target.value)} /></Field>
         <Field label="Current Skills"><textarea className={`${inputCls} min-h-[120px]`} value={skills} onChange={(e) => setSkills(e.target.value)} /></Field>
@@ -38,6 +47,7 @@ function Page() {
 
       {err && <div className="mt-6"><ErrorBox message={err} /></div>}
 
+      <SrH2>Results</SrH2>
       {result?.projects && (
         <div className="mt-10 grid gap-5 md:grid-cols-2">
           {result.projects.map((p: any, i: number) => (

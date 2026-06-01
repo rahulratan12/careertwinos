@@ -2,10 +2,18 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { mockInterview } from "@/lib/ai.functions";
-import { ModuleShell, Field, Panel, inputCls, btnCls, ScoreBar, ErrorBox, Loader } from "@/components/ModuleShell";
+import { ModuleShell, Field, Panel, inputCls, btnCls, ScoreBar, ErrorBox, Loader, SrH2 } from "@/components/ModuleShell";
+import { routeHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/mock-interview")({
-  head: () => ({ meta: [{ title: "AI Mock Interview // CareerOS" }, { name: "description", content: "Live mock interviews graded by a Tier-1 AI interviewer." }] }),
+  head: () =>
+    routeHead({
+      path: "/mock-interview",
+      title: "AI Mock Interviews // CareerOS",
+      description:
+        "Live mock interviews graded by a Tier-1 AI interviewer. Get scored answers, a model response, and follow-up questions for any target role.",
+      serviceName: "AI Mock Interview",
+    }),
   component: Page,
 });
 
@@ -35,6 +43,7 @@ function Page() {
 
   return (
     <ModuleShell num="04" tag="INTERVIEW" title="AI Mock Interviews" subtitle="Stress-test your responses with an AI that mimics lead engineers from Tier-1 firms. Get scored, get a model answer, get follow-ups.">
+      <SrH2>Interview setup</SrH2>
       <Panel className="space-y-4">
         <div className="grid items-end gap-4 md:grid-cols-[1fr_auto]">
           <Field label="Target Role / Track"><input className={inputCls} value={role} onChange={(e) => setRole(e.target.value)} /></Field>
@@ -57,6 +66,7 @@ function Page() {
         </Panel>
       )}
 
+      <SrH2>Results</SrH2>
       {eval_ && (
         <div className="mt-6 grid gap-6 md:grid-cols-5">
           <Panel className="md:col-span-2 text-center">
