@@ -2,10 +2,18 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { skillGap } from "@/lib/ai.functions";
-import { ModuleShell, Field, Panel, inputCls, btnCls, ScoreBar, ErrorBox, Loader } from "@/components/ModuleShell";
+import { ModuleShell, Field, Panel, inputCls, btnCls, ScoreBar, ErrorBox, Loader, SrH2 } from "@/components/ModuleShell";
+import { routeHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/skill-gap")({
-  head: () => ({ meta: [{ title: "Skill Gap & Roadmap // CareerOS" }, { name: "description", content: "Personalized learning roadmap that closes the gaps between you and your target role." }] }),
+  head: () =>
+    routeHead({
+      path: "/skill-gap",
+      title: "Skill Gap & Learning Roadmap // CareerOS",
+      description:
+        "Personalized week-by-week learning roadmap that closes the gaps between your current skills and your target role.",
+      serviceName: "Skill Gap Analysis & Learning Roadmap",
+    }),
   component: Page,
 });
 

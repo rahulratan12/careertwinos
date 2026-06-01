@@ -2,10 +2,18 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { readinessScore } from "@/lib/ai.functions";
-import { ModuleShell, Field, Panel, inputCls, btnCls, ScoreBar, ErrorBox, Loader } from "@/components/ModuleShell";
+import { ModuleShell, Field, Panel, inputCls, btnCls, ScoreBar, ErrorBox, Loader, SrH2 } from "@/components/ModuleShell";
+import { routeHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/readiness")({
-  head: () => ({ meta: [{ title: "Job Readiness Score // CareerOS" }, { name: "description", content: "Six-axis readiness map with the top three moves to push every dimension forward." }] }),
+  head: () =>
+    routeHead({
+      path: "/readiness",
+      title: "Job Readiness Score // CareerOS",
+      description:
+        "Six-axis job readiness map with the top three moves that change your score fastest for your target role.",
+      serviceName: "Job Readiness Score",
+    }),
   component: Page,
 });
 

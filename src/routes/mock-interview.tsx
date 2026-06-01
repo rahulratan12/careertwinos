@@ -2,10 +2,18 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { mockInterview } from "@/lib/ai.functions";
-import { ModuleShell, Field, Panel, inputCls, btnCls, ScoreBar, ErrorBox, Loader } from "@/components/ModuleShell";
+import { ModuleShell, Field, Panel, inputCls, btnCls, ScoreBar, ErrorBox, Loader, SrH2 } from "@/components/ModuleShell";
+import { routeHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/mock-interview")({
-  head: () => ({ meta: [{ title: "AI Mock Interview // CareerOS" }, { name: "description", content: "Live mock interviews graded by a Tier-1 AI interviewer." }] }),
+  head: () =>
+    routeHead({
+      path: "/mock-interview",
+      title: "AI Mock Interviews // CareerOS",
+      description:
+        "Live mock interviews graded by a Tier-1 AI interviewer. Get scored answers, a model response, and follow-up questions for any target role.",
+      serviceName: "AI Mock Interview",
+    }),
   component: Page,
 });
 

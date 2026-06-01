@@ -2,10 +2,18 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { projectRecs } from "@/lib/ai.functions";
-import { ModuleShell, Field, Panel, inputCls, btnCls, ErrorBox, Loader } from "@/components/ModuleShell";
+import { ModuleShell, Field, Panel, inputCls, btnCls, ErrorBox, Loader, SrH2 } from "@/components/ModuleShell";
+import { routeHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/projects")({
-  head: () => ({ meta: [{ title: "Project Recommendation Engine // CareerOS" }, { name: "description", content: "Portfolio projects hiring managers are actually trained to look for in 2026." }] }),
+  head: () =>
+    routeHead({
+      path: "/projects",
+      title: "Project Recommendation Engine // CareerOS",
+      description:
+        "Portfolio projects hiring managers are actually trained to look for in 2026 — calibrated to your target role and current skill level.",
+      serviceName: "Portfolio Project Recommendations",
+    }),
   component: Page,
 });
 

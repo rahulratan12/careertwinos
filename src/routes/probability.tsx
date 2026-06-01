@@ -2,10 +2,18 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { hiringProbability } from "@/lib/ai.functions";
-import { ModuleShell, Field, Panel, inputCls, btnCls, ErrorBox, Loader } from "@/components/ModuleShell";
+import { ModuleShell, Field, Panel, inputCls, btnCls, ErrorBox, Loader, SrH2 } from "@/components/ModuleShell";
+import { routeHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/probability")({
-  head: () => ({ meta: [{ title: "Hiring Probability // CareerOS" }, { name: "description", content: "Monte-Carlo style hiring probability with concrete drivers, blockers, and rejection reasons." }] }),
+  head: () =>
+    routeHead({
+      path: "/probability",
+      title: "Hiring Probability Simulator // CareerOS",
+      description:
+        "Monte-Carlo style hiring probability for any role at any company, with concrete drivers, blockers, and likely rejection reasons.",
+      serviceName: "Hiring Probability Simulator",
+    }),
   component: Page,
 });
 
