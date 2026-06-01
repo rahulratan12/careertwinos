@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://careertwinos.lovable.app/sitemap.xml
