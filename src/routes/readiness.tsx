@@ -35,6 +35,7 @@ function Page() {
 
   return (
     <ModuleShell num="06" tag="SCORE" title="Job Readiness Score" subtitle="A six-axis readiness map. See where you're strong, where you're not, and the three moves that change the score fastest.">
+      <SrH2>Inputs</SrH2>
       <form onSubmit={onSubmit} className="space-y-5">
         <Field label="Target Role"><input className={inputCls} value={role} onChange={(e) => setRole(e.target.value)} /></Field>
         <Field label="Resume / Background"><textarea className={`${inputCls} min-h-[160px]`} value={resume} onChange={(e) => setResume(e.target.value)} /></Field>
@@ -46,6 +47,7 @@ function Page() {
 
       {err && <div className="mt-6"><ErrorBox message={err} /></div>}
 
+      <SrH2>Results</SrH2>
       {result && (
         <div className="mt-10 grid gap-6 md:grid-cols-5">
           <Panel className="md:col-span-2 text-center">

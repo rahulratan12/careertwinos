@@ -35,6 +35,7 @@ function Page() {
 
   return (
     <ModuleShell num="03" tag="ROADMAP" title="Skill Gap & Learning Roadmap" subtitle="An automated, week-by-week learning path calibrated to market demand and your target trajectory.">
+      <SrH2>Inputs</SrH2>
       <form onSubmit={onSubmit} className="space-y-5">
         <Field label="Target Role"><input className={inputCls} value={role} onChange={(e) => setRole(e.target.value)} /></Field>
         <Field label="Current Skills"><textarea className={`${inputCls} min-h-[140px]`} value={skills} onChange={(e) => setSkills(e.target.value)} /></Field>
@@ -46,6 +47,7 @@ function Page() {
 
       {err && <div className="mt-6"><ErrorBox message={err} /></div>}
 
+      <SrH2>Results</SrH2>
       {result && (
         <div className="mt-10 grid gap-6 md:grid-cols-5">
           <Panel className="md:col-span-2">

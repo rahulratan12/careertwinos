@@ -35,6 +35,7 @@ function Page() {
 
   return (
     <ModuleShell num="05" tag="BUILD" title="Project Recommendation Engine" subtitle="Stop building generic todo apps. Build the exact portfolio pieces hiring agents at top firms are trained to look for in 2026.">
+      <SrH2>Inputs</SrH2>
       <form onSubmit={onSubmit} className="space-y-5">
         <Field label="Target Role"><input className={inputCls} value={role} onChange={(e) => setRole(e.target.value)} /></Field>
         <Field label="Current Skills"><textarea className={`${inputCls} min-h-[120px]`} value={skills} onChange={(e) => setSkills(e.target.value)} /></Field>
@@ -46,6 +47,7 @@ function Page() {
 
       {err && <div className="mt-6"><ErrorBox message={err} /></div>}
 
+      <SrH2>Results</SrH2>
       {result?.projects && (
         <div className="mt-10 grid gap-5 md:grid-cols-2">
           {result.projects.map((p: any, i: number) => (

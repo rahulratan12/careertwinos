@@ -36,6 +36,7 @@ function Page() {
 
   return (
     <ModuleShell num="02" tag="FORECAST" title="Hiring Probability Simulator" subtitle="Predict your real hiring chance for a specific role at a specific company — and see exactly what's pulling the number up or down.">
+      <SrH2>Inputs</SrH2>
       <form onSubmit={onSubmit} className="space-y-5">
         <div className="grid gap-5 md:grid-cols-2">
           <Field label="Target Role"><input className={inputCls} value={role} onChange={(e) => setRole(e.target.value)} /></Field>
@@ -50,6 +51,7 @@ function Page() {
 
       {err && <div className="mt-6"><ErrorBox message={err} /></div>}
 
+      <SrH2>Results</SrH2>
       {result && (
         <div className="mt-10 grid gap-6 md:grid-cols-5">
           <Panel className="md:col-span-2 text-center">
