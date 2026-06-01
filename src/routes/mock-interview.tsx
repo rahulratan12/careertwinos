@@ -43,6 +43,7 @@ function Page() {
 
   return (
     <ModuleShell num="04" tag="INTERVIEW" title="AI Mock Interviews" subtitle="Stress-test your responses with an AI that mimics lead engineers from Tier-1 firms. Get scored, get a model answer, get follow-ups.">
+      <SrH2>Interview setup</SrH2>
       <Panel className="space-y-4">
         <div className="grid items-end gap-4 md:grid-cols-[1fr_auto]">
           <Field label="Target Role / Track"><input className={inputCls} value={role} onChange={(e) => setRole(e.target.value)} /></Field>
