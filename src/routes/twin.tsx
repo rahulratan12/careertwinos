@@ -2,10 +2,18 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useState, useRef, useEffect } from "react";
 import { twinChat } from "@/lib/ai.functions";
-import { ModuleShell, inputCls, btnCls, ErrorBox } from "@/components/ModuleShell";
+import { ModuleShell, inputCls, btnCls, ErrorBox, SrH2 } from "@/components/ModuleShell";
+import { routeHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/twin")({
-  head: () => ({ meta: [{ title: "Career Twin // CareerOS" }, { name: "description", content: "Your 24/7 conversational career strategist." }] }),
+  head: () =>
+    routeHead({
+      path: "/twin",
+      title: "Career Twin // CareerOS",
+      description:
+        "Your 24/7 conversational AI career strategist — reasons across hiring panels, mock interviews, skill gaps, and readiness scores to plan your next move.",
+      serviceName: "Career Twin Conversational AI",
+    }),
   component: Page,
 });
 
