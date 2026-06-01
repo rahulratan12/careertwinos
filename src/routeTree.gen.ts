@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TwinRouteImport } from './routes/twin'
 import { Route as SkillGapRouteImport } from './routes/skill-gap'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ReadinessRouteImport } from './routes/readiness'
 import { Route as ProjectsRouteImport } from './routes/projects'
 import { Route as ProbabilityRouteImport } from './routes/probability'
@@ -26,6 +27,11 @@ const TwinRoute = TwinRouteImport.update({
 const SkillGapRoute = SkillGapRouteImport.update({
   id: '/skill-gap',
   path: '/skill-gap',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ReadinessRoute = ReadinessRouteImport.update({
@@ -66,6 +72,7 @@ export interface FileRoutesByFullPath {
   '/probability': typeof ProbabilityRoute
   '/projects': typeof ProjectsRoute
   '/readiness': typeof ReadinessRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/skill-gap': typeof SkillGapRoute
   '/twin': typeof TwinRoute
 }
@@ -76,6 +83,7 @@ export interface FileRoutesByTo {
   '/probability': typeof ProbabilityRoute
   '/projects': typeof ProjectsRoute
   '/readiness': typeof ReadinessRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/skill-gap': typeof SkillGapRoute
   '/twin': typeof TwinRoute
 }
@@ -87,6 +95,7 @@ export interface FileRoutesById {
   '/probability': typeof ProbabilityRoute
   '/projects': typeof ProjectsRoute
   '/readiness': typeof ReadinessRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/skill-gap': typeof SkillGapRoute
   '/twin': typeof TwinRoute
 }
@@ -99,6 +108,7 @@ export interface FileRouteTypes {
     | '/probability'
     | '/projects'
     | '/readiness'
+    | '/sitemap.xml'
     | '/skill-gap'
     | '/twin'
   fileRoutesByTo: FileRoutesByTo
@@ -109,6 +119,7 @@ export interface FileRouteTypes {
     | '/probability'
     | '/projects'
     | '/readiness'
+    | '/sitemap.xml'
     | '/skill-gap'
     | '/twin'
   id:
@@ -119,6 +130,7 @@ export interface FileRouteTypes {
     | '/probability'
     | '/projects'
     | '/readiness'
+    | '/sitemap.xml'
     | '/skill-gap'
     | '/twin'
   fileRoutesById: FileRoutesById
@@ -130,6 +142,7 @@ export interface RootRouteChildren {
   ProbabilityRoute: typeof ProbabilityRoute
   ProjectsRoute: typeof ProjectsRoute
   ReadinessRoute: typeof ReadinessRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SkillGapRoute: typeof SkillGapRoute
   TwinRoute: typeof TwinRoute
 }
@@ -148,6 +161,13 @@ declare module '@tanstack/react-router' {
       path: '/skill-gap'
       fullPath: '/skill-gap'
       preLoaderRoute: typeof SkillGapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/readiness': {
@@ -202,9 +222,20 @@ const rootRouteChildren: RootRouteChildren = {
   ProbabilityRoute: ProbabilityRoute,
   ProjectsRoute: ProjectsRoute,
   ReadinessRoute: ReadinessRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SkillGapRoute: SkillGapRoute,
   TwinRoute: TwinRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
