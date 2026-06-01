@@ -88,7 +88,7 @@ function Page() {
               </Panel>
             ))}
           </div>
-        </div>
+        </section>
       )}
     </ModuleShell>
   );
