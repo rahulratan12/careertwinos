@@ -84,3 +84,8 @@ export function Loader({ label = "PROCESSING" }: { label?: string }) {
     </div>
   );
 }
+
+export function SrH2({ children }: { children: ReactNode }) {
+  return <h2 className="sr-only">{children}</h2>;
+}
+
