@@ -62,6 +62,7 @@ function Page() {
           <div className="mono text-[10px] text-muted-foreground">Twin_Session.live</div>
           <div className="mono flex items-center gap-2 text-[10px] text-signal"><span className="h-1.5 w-1.5 animate-pulse rounded-full bg-signal" />ONLINE</div>
         </div>
+        <SrH2>Conversation</SrH2>
         <div className="max-h-[55vh] min-h-[40vh] overflow-y-auto p-5">
           <div className="space-y-5">
             {messages.map((m, i) => (
@@ -76,6 +77,7 @@ function Page() {
             <div ref={endRef} />
           </div>
         </div>
+        <SrH2>Suggested prompts</SrH2>
         <div className="flex flex-wrap gap-2 border-t border-border px-4 py-3">
           {SUGGESTIONS.map((s) => (
             <button key={s} onClick={() => send(s)} disabled={loading} className="mono rounded-sm border border-border px-2 py-1 text-[10px] text-muted-foreground transition-colors hover:border-signal hover:text-signal disabled:opacity-50">
