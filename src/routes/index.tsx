@@ -1,15 +1,15 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Nav, Footer } from "@/components/Nav";
+import { routeHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "CareerOS // Your Career, Synthesized" },
-      { name: "description", content: "AI-powered career operating system: simulate hiring panels, predict hiring chances, close skill gaps, and ace interviews." },
-      { property: "og:title", content: "CareerOS // Your Career, Synthesized" },
-      { property: "og:description", content: "Multi-agent hiring panels, mock interviews, and a Career Twin that gets you job-ready faster." },
-    ],
-  }),
+  head: () =>
+    routeHead({
+      path: "/",
+      title: "CareerOS // Your Career, Synthesized",
+      description:
+        "AI-powered career operating system: simulate hiring panels, predict hiring chances, close skill gaps, and ace mock interviews with your Career Twin.",
+    }),
   component: Index,
 });
 
