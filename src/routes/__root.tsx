@@ -77,6 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "google-site-verification", content: "nT5UPKI-H62q5yybe98LOhhqgzuq51KK-leLM7LteMM" },
       { title: "AICareerOS" },
       { name: "description", content: "AI-powered career operating system. Multi-agent hiring panels, mock interviews, and your Career Twin." },
       { name: "author", content: "CareerOS" },
