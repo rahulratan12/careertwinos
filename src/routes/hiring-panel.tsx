@@ -2,10 +2,18 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { hiringPanelReview } from "@/lib/ai.functions";
-import { ModuleShell, Field, Panel, inputCls, btnCls, ScoreBar, ErrorBox, Loader } from "@/components/ModuleShell";
+import { ModuleShell, Field, Panel, inputCls, btnCls, ScoreBar, ErrorBox, Loader, SrH2 } from "@/components/ModuleShell";
+import { routeHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/hiring-panel")({
-  head: () => ({ meta: [{ title: "Hiring Panel // CareerOS" }, { name: "description", content: "Simulate a 4-person AI hiring panel for any resume + job description." }] }),
+  head: () =>
+    routeHead({
+      path: "/hiring-panel",
+      title: "Multi-Agent Hiring Panel // CareerOS",
+      description:
+        "Simulate a 4-person AI hiring panel — Recruiter, Hiring Manager, Tech Lead, Bar Raiser — to grade any resume against any job description.",
+      serviceName: "AI Hiring Panel Simulation",
+    }),
   component: Page,
 });
 
@@ -30,19 +38,23 @@ function Page() {
 
   return (
     <ModuleShell num="01" tag="PANEL" title="Multi-Agent Hiring Panel" subtitle="Four specialist agents — Recruiter, Hiring Manager, Tech Lead, Bar Raiser — independently grade your candidacy and converge on a verdict.">
-      <form onSubmit={onSubmit} className="grid gap-6 md:grid-cols-2">
-        <Field label="Resume / Profile"><textarea className={`${inputCls} min-h-[220px] mono text-[12px]`} value={resume} onChange={(e) => setResume(e.target.value)} /></Field>
-        <Field label="Job Description"><textarea className={`${inputCls} min-h-[220px] mono text-[12px]`} value={jd} onChange={(e) => setJd(e.target.value)} /></Field>
-        <div className="md:col-span-2 flex items-center gap-3">
-          <button type="submit" disabled={loading} className={btnCls}>{loading ? "CONVENING PANEL…" : "RUN PANEL →"}</button>
-          {loading && <Loader label="AGENTS DELIBERATING" />}
-        </div>
-      </form>
+      <section>
+        <SrH2>Candidate inputs</SrH2>
+        <form onSubmit={onSubmit} className="grid gap-6 md:grid-cols-2">
+          <Field label="Resume / Profile"><textarea className={`${inputCls} min-h-[220px] mono text-[12px]`} value={resume} onChange={(e) => setResume(e.target.value)} /></Field>
+          <Field label="Job Description"><textarea className={`${inputCls} min-h-[220px] mono text-[12px]`} value={jd} onChange={(e) => setJd(e.target.value)} /></Field>
+          <div className="md:col-span-2 flex items-center gap-3">
+            <button type="submit" disabled={loading} className={btnCls}>{loading ? "CONVENING PANEL…" : "RUN PANEL →"}</button>
+            {loading && <Loader label="AGENTS DELIBERATING" />}
+          </div>
+        </form>
+      </section>
 
       {err && <div className="mt-6"><ErrorBox message={err} /></div>}
 
       {result?.verdicts && (
-        <div className="mt-10 space-y-6">
+        <section className="mt-10 space-y-6">
+          <SrH2>Panel verdicts</SrH2>
           <Panel className="flex flex-wrap items-center justify-between gap-4">
             <div>
               <div className="mono text-[10px] uppercase tracking-widest text-muted-foreground">Panel Decision</div>
